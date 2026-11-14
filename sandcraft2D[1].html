@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandCraft — Официальный сайт игры</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --accent-hover: #1f6feb;
+            --green-accent: #238636;
+            --green-hover: #2ea043;
+            --text-main: #c9d1d9;
+            --text-heading: #ffffff;
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Шапка */
+        header {
+            background-color: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .auth-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: var(--text-heading) !important;
+        }
+        .auth-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 150px 20px 80px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--green-accent);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: var(--green-hover);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        section h2 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2rem;
+            color: var(--text-heading);
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        /* Список версий (Лог обновлений) */
+        .version-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .version-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-heading);
+        }
+
+        .version-date {
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+
+        .version-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .version-list li {
+            margin-bottom: 6px;
+        }
+
+        /* Галерея скриншотов */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .screenshot-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        /* Комментарии */
+        .comments-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            color: #fff;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .comment-item {
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка с навигацией и входом -->
+    <header>
+        <div class="nav-container">
+            <!-- Твой логотип в шапке -->
+            <img src="game.jpg" alt="SandCraft Logo" class="logo-img">
+            <ul class="nav-links">
+                <li><a href="#updates">Обновления</a></li>
+                <li><a href="#gallery">Скриншоты</a></li>
+                <li><a href="#comments">Отзывы</a></li>
+                <li><a href="#" class="auth-btn">Войти / Регистрация</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <!-- Твой логотип по центру -->
+        <img src="game.jpg" alt="SandCraft" class="hero-logo">
+        <p>Мобильная 2D песочница с процедурной генерацией, физикой и полной свободой творчества.</p>
+        <a href="#updates" class="btn">Скачать последнюю версию</a>
+    </section>
+
+    <!-- Секция обновлений и скачивания -->
+    <div class="container" id="updates">
+        <h2>Версии игры и обновления</h2>
+        
+        <!-- Карточка версии 1.1 -->
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-title">SandCraft v1.1.0 (Релиз)</span>
+                <span class="version-date">10 ноября 2026</span>
+            </div>
+            <ul class="version-list">
+                <li>Добавлена новая физика сыпучих материалов и воды.</li>
+                <li>Исправлены баги с падением FPS при генерации мира.</li>
+                <li>Интегрировано сенсорное управление под мобильные экраны.</li>
+            </ul>
+            <a href="#" class="btn">📥 Скачать APK (15.2 MB)</a>
+        </div>
+
+        <!-- Карточка версии 1.0 -->
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-title">SandCraft v1.0.0 (Альфа)</span>
+                <span class="version-date">01 октября 2026</span>
+            </div>
+            <ul class="version-list">
+                <li>Первый публичный запуск проекта.</li>
+                <li>Базовый крафт, инвентарь и генерация сетки 256x127.</li>
+            </ul>
+            <a href="#" class="btn" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">📥 Скачать APK</a>
+        </div>
+    </div>
+
+    <!-- Галерея скриншотов -->
+    <div class="container" id="gallery">
+        <h2>Скриншоты сообщества</h2>
+        <div class="gallery-grid">
+            <div class="screenshot-item">Скриншот мира #1</div>
+            <div class="screenshot-item">Скриншот шахты #2</div>
+            <div class="screenshot-item">Скриншот постройки #3</div>
+        </div>
+        <!-- Админ-панель (показывается только создателю) -->
+        <div style="margin-top: 20px; text-align: right;">
+            <a href="#" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;">+ Загрузить новый скриншот</a>
+        </div>
+    </div>
+
+    <!-- Комментарии -->
+    <div class="container" id="comments">
+        <div class="comments-section">
+            <h2>Комментарии игроков</h2>
+            
+            <!-- Форма отправки комментария (доступна авторизованным) -->
+            <div class="comment-form">
+                <textarea placeholder="Напишите свой отзыв или предложение к обновлению..."></textarea>
+                <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Отправить</button>
+            </div>
+
+            <!-- Список комментариев -->
+            <div class="comment-item">
+                <div class="comment-author">_Turetsky_</div>
+                <p>Отличная физика воды! Ждем новые блоки в патче v1.2.</p>
+            </div>
+            <div class="comment-item">
+                <div class="comment-author">PixelGamer</div>
+                <p>Игра идет плавно на телефоне, управление удобное.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 SandCraft. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
