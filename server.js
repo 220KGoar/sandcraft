@@ -6,9 +6,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Обработка запроса регистрации от нашей Pascal-программы
-app.post('/register', (req, res) => {
-    const login = req.body.login;
-    const password = req.body.password;
+app.get('/register', (req, res) => {
+    const login = req.query.login;
+    const password = req.query.password;
 
     // Проверка, переданы ли данные
     if (!login || !password) {
